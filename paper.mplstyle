@@ -1,0 +1,51 @@
+axes.edgecolor       : 262626
+axes.labelcolor      : 262626
+axes.labelsize       : 18
+axes.labelweight     : bold
+axes.linewidth       : 2
+axes.titlesize       : large
+
+figure.titlesize     : large
+figure.autolayout    : True
+
+font.family          : serif
+font.size            : 16
+font.serif           : Times, Palatino, New Century Schoolbook, Bookman, Computer Modern Roman
+font.weight          : bold
+
+grid.color           : 262626
+grid.linestyle       : --
+grid.linewidth       : 2
+grid.alpha           : 0.23
+
+legend.frameon       : False
+legend.fontsize      : large
+legend.numpoints     : 1
+legend.scatterpoints : 1
+
+lines.linewidth      : 2
+lines.markersize     : 8
+
+patch.edgecolor      : 262626
+
+text.color           : 262626
+text.latex.preamble  : \usepackage{amsmath}, \usepackage{amssymb}, \usepackage[mathscr]{euscript}
+text.usetex          : True
+
+xtick.color          : 262626
+xtick.labelsize      : large
+xtick.major.size     : 8
+xtick.minor.size     : 4
+xtick.major.width    : 1.5
+xtick.minor.width    : 1.5
+xtick.direction      : in
+xtick.top            : True
+
+ytick.color          : 262626
+ytick.labelsize      : large
+ytick.major.size     : 8
+ytick.minor.size     : 4
+ytick.major.width    : 1.5
+ytick.minor.width    : 1.5
+ytick.direction      : in
+ytick.right          : True
