@@ -1,5 +1,5 @@
 # Plot scripts for the HESTIA Hermeian halo paper
-**Last reviewed:** v0.1
+**Last reviewed:** v1.0
 
 A set of scripts and a data repository to reproduce the plots in the HESTIA
 Hermeian halo discovery paper.
