@@ -46,6 +46,9 @@ def main():
         main_halo_ids = np.uint64([key for key in dist_data.keys()])
         main_halo_ids = np.sort(main_halo_ids)
 
+    ####################################################################
+    # Plot distance to Hermeian from each respective host halo
+    ####################################################################
     fig, axs = plt.subplots(1,
                             2,
                             sharey=True,
@@ -54,23 +57,30 @@ def main():
                                 'hspace': 0,
                                 'wspace': 0
                             })
-
+    """Halo IDs are assigned from most-massive to least massive. By
+        convention, the M31 analogue is chosen to be the more massive
+        (i.e. lower ID) analogue. We want the MW analogue on the left,
+        so reverse the ID order..."""
     for m_i, main_id in enumerate(main_halo_ids[::-1]):
         with h5py.File(dist_file, 'r') as dist_data:
             host_r_virial = dist_data['{}'.format(main_id)]['R_vir'][...]
             hermeian_tlb = dist_data['{}'.format(main_id)]['Distance'][:, 0]
             hermeian_dists = dist_data['{}'.format(main_id)]['Distance'][:, 1:]
 
+        # Primary halo virial radius evolution
         axs[m_i].plot(host_r_virial[:, 0],
                       host_r_virial[:, 1],
                       linestyle=':',
                       color='k',
                       zorder=99)
 
+        # Plot the dark Hermeian haloes
         for d_h_i in np.arange(4, len(hermeian_dists[0])):
             axs[m_i].plot(hermeian_tlb, hermeian_dists[:, d_h_i],
                           **dark_hermeian_style)
 
+        # Plot the Hermeian galaxies (i.e. containing stars). Order is
+        # from most-massive to least.
         for g_h_i in np.arange(4):
             axs[m_i].plot(hermeian_tlb,
                           hermeian_dists[:, g_h_i],
@@ -90,6 +100,7 @@ def main():
                xlim=xlim,
                title=r"M31")
 
+    # Avoid tick label overlap
     ax_nbins = len(axs[0].get_xticklabels())
     axs[0].xaxis.set_major_locator(MaxNLocator(nbins=ax_nbins, prune='upper'))
 
