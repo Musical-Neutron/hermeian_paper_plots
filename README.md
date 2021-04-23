@@ -38,9 +38,9 @@ figures in the paper. There are two files:
 ## 3.0 Citations
 This code and accompanying input data are freely available. If using this code,
 the data, a derivative work, or results thereof, please cite:
-* [Newton (2021)](http://doi.org/10.5281/zenodo.4708338)
+* [O. Newton (2021)](http://doi.org/10.5281/zenodo.4708338)
 > Will be updated upon acceptance
-<!-- [Newton+(2021)](https://arxiv.org/abs/) -->
+<!-- [O. Newton et al. (2021)](https://arxiv.org/abs/) -->
 
 If you have any questions or would like help in using the code, please email:
 > olivier 'dot' newton 'at' univ-lyon1.fr
