@@ -37,7 +37,8 @@ figures in the paper. There are two files:
 
 ## 3.0 Citations
 This code and accompanying input data are freely available. If using this code,
-a derivative work or results thereof, please cite:
+the data, a derivative work, or results thereof, please cite:
+* [Newton (2021)](http://doi.org/10.5281/zenodo.4708338)
 > Will be updated upon acceptance
 <!-- [Newton+(2021)](https://arxiv.org/abs/) -->
 
