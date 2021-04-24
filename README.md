@@ -24,7 +24,7 @@ There are four scripts that can be executed independently:
   from the MW analogue and angular extent of the photon emission region.
 
 There is also a master script, [plot_paper_plots.py](/plot_paper_plots.py),
-which will run all of the above scripts when executed. This will produce .svg
+that will run all of the above scripts when executed. This produces .svg
 and .pdf versions of each figure in the paper.
 
 ## 2.0 Data
@@ -36,11 +36,16 @@ figures in the paper. There are two files:
   - Required for Figs. 2&ndash;5.
 
 ## 3.0 Citations
-This code and accompanying input data are freely available. If using this code,
-the data, a derivative work, or results thereof, please cite:
+This code and the accompanying data are freely available.
+### If you use this code or derivative work:
 * [O. Newton (2021)](http://doi.org/10.5281/zenodo.4708338)
 > Will be updated upon acceptance
-<!-- [O. Newton et al. (2021)](https://arxiv.org/abs/) -->
 
-If you have any questions or would like help in using the code, please email:
+### If you use these data, a derivative work, or results thereof:
+* [O. Newton (2021)](http://doi.org/10.5281/zenodo.4708338)
+> Will be updated upon acceptance
+* [N. Libeskind et al. (2020)](https://doi.org/10.1093/mnras/staa2541)
+
+If you have any questions or would like help in using the scripts, please
+email:
 > olivier 'dot' newton 'at' univ-lyon1.fr
