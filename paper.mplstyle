@@ -29,7 +29,6 @@ lines.markersize     : 8
 patch.edgecolor      : 262626
 
 text.color           : 262626
-text.latex.preamble  : \usepackage{amsmath}, \usepackage{amssymb}, \usepackage[mathscr]{euscript}
 text.usetex          : True
 
 xtick.color          : 262626
