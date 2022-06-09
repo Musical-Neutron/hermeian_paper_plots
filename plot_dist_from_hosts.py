@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 # Place import files below
+import os
+
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 from matplotlib.ticker import MaxNLocator
+
+from common_functions import save_figures
 
 
 def main():
@@ -105,20 +108,6 @@ def main():
     axs[0].xaxis.set_major_locator(MaxNLocator(nbins=ax_nbins, prune='upper'))
 
     save_figures(fig, orbits_plot)
-
-    return None
-
-
-def save_figures(fig, location):
-    if '.pdf' in location:
-        pdf_file = location
-        svg_file = location.replace('.pdf', '.svg')
-    else:
-        pdf_file = location + '.pdf'
-        svg_file = location + '.svg'
-
-    fig.savefig(pdf_file, dpi=600, format='pdf', transparent=False)
-    fig.savefig(svg_file, dpi=600, format='svg', transparent=False)
 
     return None
 

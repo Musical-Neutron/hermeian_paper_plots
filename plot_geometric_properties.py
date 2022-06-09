@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 
 # Place import files below
+import os
+
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 from matplotlib.ticker import MultipleLocator
+
+from common_functions import save_figures, Angle
 
 
 def main():
@@ -128,12 +131,13 @@ def main():
     plot_dn_dR_hist(axs[1], bsplash_dist_lg, bsplash_hist_style)
     plot_dn_dR_hist(axs[1], dm_hermeian_dist_lg, hermeian_hist_style)
 
-    axs[1].set(
-        xlabel=
-        r'$r_{\rm mid}\, \cdot \frac{\cos \theta_{\rm mid}}{\left|\cos \theta_{\rm mid}\right|} \, \left({\rm Mpc}\right)$',
-        ylabel=r'$dP\, /\, dV_{\rm mid}$',
-        xlim=[-2.5, 2.5],
-        ylim=[0, None])
+    axs[1].set(xlabel=(
+        r'$r_{\rm mid}\, \cdot $' +
+        r'$\frac{\cos \theta_{\rm mid}}{\left|\cos \theta_{\rm mid}\right|}\,$'
+        + r'$\left({\rm Mpc}\right)$'),
+               ylabel=r'$dP\, /\, dV_{\rm mid}$',
+               xlim=[-2.5, 2.5],
+               ylim=[0, None])
 
     mid_y = np.sum(axs[1].get_ylim()) / 2.
     for l_dist, color, marker in zip(l_hermeian_dist_lg,
@@ -233,11 +237,11 @@ def main():
                edgecolors='k',
                zorder=99,
                **hermeian_style)
-    for l, b, color, marker in zip(l_hermeian_l, l_hermeian_b,
-                                   l_hermeian_style['color'],
-                                   l_hermeian_style['marker']):
-        ax.scatter(l,
-                   b,
+    for l_angle, b_angle, color, marker in zip(l_hermeian_l, l_hermeian_b,
+                                               l_hermeian_style['color'],
+                                               l_hermeian_style['marker']):
+        ax.scatter(l_angle,
+                   b_angle,
                    s=60,
                    color=color,
                    marker=marker,
@@ -253,85 +257,6 @@ def main():
     save_figures(fig, lg_aitoff_hermeian_plot)
 
     return None
-
-
-# Functions
-class Angle(object):
-    degree_conversion_factors = {
-        'degree': 1.,
-        'radian': np.pi / 180.,
-        'quadrant': 1. / 90.,
-        'sextant': 1. / 60.,
-        'octant': 1. / 45.,
-        'hexacontade': 1. / 6.,
-        'binary_degree': 256. / 360.,
-        'gradian': 400. / 360.,
-        'arcminute': 21600. / 360.,
-        'arcsecond': 1296000. / 360.
-    }
-
-    def __init__(self, angles, fromunit='degree') -> None:
-        self.angles = angles
-        if fromunit not in Angle.degree_conversion_factors.keys():
-            raise ValueError("fromunit must be one of: {}".format(
-                Angle.degree_conversion_factors.keys()))
-        self.fromunit = fromunit
-
-        super().__init__()
-
-    # Angle getter
-    def get_angles(self):
-        return self._angles
-
-    # Fromunit getter
-    def get_fromunit(self):
-        return self._fromunit
-
-    # Angle setter
-    def set_angles(self, angles):
-        # Initial type-checking
-        angle_permitted_types = (float, list, np.ndarray)
-        if not isinstance(angles, angle_permitted_types):
-            raise TypeError(
-                '"angles" must be one of: {}'.format(angle_permitted_types))
-        self._angles = angles
-
-        if hasattr(self, '_fromunit'):
-            self.set_conversions(self._angles, self._fromunit)
-        return None
-
-    # Fromunit setter
-    def set_fromunit(self, fromunit):
-        # Initial type-checking
-        fromunit_permitted_types = (str)
-        if not isinstance(fromunit, fromunit_permitted_types):
-            raise TypeError('"fromunit" must be one of: {}'.format(
-                fromunit_permitted_types))
-        self._fromunit = fromunit
-
-        if hasattr(self, '_angles'):
-            self.set_conversions(self._angles, self._fromunit)
-        return None
-
-    def set_conversions(self, angles, fromunit):
-        # Initial type-checking
-        if fromunit not in Angle.degree_conversion_factors.keys():
-            raise ValueError('"fromunit" must be one of {}'.format(
-                Angle.degree_conversion_factors.keys()))
-
-        # Convert lists to np.ndarray
-        if isinstance(angles, list):
-            angles = np.asarray(angles)
-
-        # self.fromunit = fromunit
-        degrees = angles / Angle.degree_conversion_factors[fromunit]
-
-        for key in Angle.degree_conversion_factors.keys():
-            setattr(self, key, degrees * Angle.degree_conversion_factors[key])
-        return None
-
-    angles = property(get_angles, set_angles)
-    fromunit = property(get_fromunit, set_fromunit)
 
 
 def plot_dn_dR_hist(ax, distances, style_dict):
@@ -410,20 +335,6 @@ def plot_dn_dster_hist(ax, angle_object, style_dict):
             histtype='step',
             density=True,
             **style_dict)
-
-    return None
-
-
-def save_figures(fig, location):
-    if '.pdf' in location:
-        pdf_file = location
-        svg_file = location.replace('.pdf', '.svg')
-    else:
-        pdf_file = location + '.pdf'
-        svg_file = location + '.svg'
-
-    fig.savefig(pdf_file, dpi=600, format='pdf', transparent=False)
-    fig.savefig(svg_file, dpi=600, format='svg', transparent=False)
 
     return None
 
