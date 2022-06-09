@@ -69,4 +69,4 @@ This code and the accompanying data are freely available.
 
 If you have any questions or would like help in using the scripts, please
 email:
-> olivier 'dot' j 'dot' newton 'at' ljmu.ac.uk
+> o 'dot' j 'dot' newton 'at' ljmu.ac.uk
