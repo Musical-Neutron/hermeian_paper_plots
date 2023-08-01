@@ -9,7 +9,7 @@ import astropy.units as units
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.special import erf
+from scipy.special import erf
 from matplotlib.text import Annotation
 from matplotlib.ticker import LogLocator
 from matplotlib.transforms import Affine2D
