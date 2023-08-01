@@ -6,7 +6,7 @@ import os
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.special as scp
+from scipy.special import erf
 from matplotlib.ticker import FormatStrFormatter, MaxNLocator, MultipleLocator
 
 from common_functions import NFWHalo, c_exp, save_figures
@@ -111,7 +111,7 @@ def main():
     select_by_mass = log_m200 >= np.log10(100. * m_dm)
 
     # Calculate 68% confidence intervals
-    CL = 100. * scp.erf(1. / np.sqrt(2.))
+    CL = 100. * erf(1. / np.sqrt(2.))
     bounds = np.empty(2)
     bounds[0] = (100. - np.float64(CL)) / 2.
     bounds[1] = 100. - bounds[0]

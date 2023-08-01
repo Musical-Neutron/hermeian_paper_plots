@@ -9,7 +9,7 @@ import astropy.units as units
 import h5py
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy.special as scp
+from scipy.special import erf
 from matplotlib.text import Annotation
 from matplotlib.ticker import LogLocator
 from matplotlib.transforms import Affine2D
@@ -532,7 +532,7 @@ def calculate_binned_data(x, y, bin_edges):
     n_samples = 1000
 
     # Error bounds
-    CL = 100 * scp.erf(1. / np.sqrt(2.))
+    CL = 100 * erf(1. / np.sqrt(2.))
     l_bound = (100. - np.float64(CL)) / 2.
     u_bound = 100. - l_bound
 
